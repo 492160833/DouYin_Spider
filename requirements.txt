@@ -10,4 +10,5 @@ qrcode
 requests
 retry
 urllib3
+websocket-client
 websockets

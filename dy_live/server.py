@@ -2,6 +2,7 @@ import gzip
 import sys
 import threading
 import time
+import os
 from urllib.parse import urlencode
 
 from websocket import WebSocketApp
@@ -172,6 +173,6 @@ class DouyinLive:
 
 if __name__ == '__main__':
     common_util.load_env()
-    live_id = "432433667143"
+    live_id = os.getenv('LIVE_ID')
     live = DouyinLive(live_id, common_util.dy_auth)
     live.start_ws()
