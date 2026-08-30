@@ -36,6 +36,8 @@ class DouyinLive:
 
     def on_open(self, ws):
         print("\033[32m### opened ###\033[m")
+        if hasattr(self.auth_, "live_websocket_connected"):
+            self.auth_.live_websocket_connected = True
         threading.Thread(target=self.ping, args=(ws,)).start()
 
     def on_message(self, ws, message):
@@ -45,6 +47,10 @@ class DouyinLive:
             origin_bytes = gzip.decompress(frame.payload)
             response = Live_pb2.LiveResponse()
             response.ParseFromString(origin_bytes)
+            if hasattr(self.auth_, "live_websocket_verified"):
+                # A successful protobuf parse proves the websocket payload
+                # path, whereas on_open alone only proves the handshake.
+                self.auth_.live_websocket_verified = True
             if response.needAck:
                 s = Live_pb2.PushFrame()
                 s.payloadType = "ack"
@@ -173,5 +179,8 @@ class DouyinLive:
 if __name__ == '__main__':
     common_util.load_env()
     live_id = "432433667143"
-    live = DouyinLive(live_id, common_util.dy_auth)
+    # Live REST/WebSocket uses the same Auth session as the main-site APIs;
+    # an explicit DY_LIVE_COOKIES remains an opt-in legacy override handled by
+    # load_env().
+    live = DouyinLive(live_id, common_util.get_live_auth())
     live.start_ws()
