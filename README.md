@@ -29,7 +29,7 @@
 
 <div align="center">
 
-[![FastAIToken](https://github.com/TheSmallHanCat/flow2api/blob/main/static/sponsors/fastaitoken-banner.png)](https://www.fastaitoken.com/register?aff=48J4VXUABAAV)
+[![FastAIToken](./author/fastaitoken-banner.png)](https://www.fastaitoken.com/register?aff=48J4VXUABAAV)
 
 </div>
 
@@ -112,7 +112,8 @@ npm install
 ### 🎨配置文件
 这里以小红书的cookie获取为例
 
-注意.env文件有两个变量，一个是打开www.douyin.com这个域名获取的，另一个是打开live.douyin.com这个域名获取的，第一个用于爬虫，第二个用于直播间监听
+现在推荐只配置 `DY_COOKIES`：主站 `Auth` 会被作品接口、直播 REST/WebSocket 和创作者中心共同复用。
+`DY_LIVE_COOKIES` 仍可作为旧版独立直播浏览器的显式覆盖，但不再是必填项。
 
 配置文件在项目根目录.env文件中，将下图自己的登录cookie放入其中，cookie获取➡️在浏览器f12打开控制台，点击网络，点击fetch，找一个接口点开
 ![image](https://github.com/user-attachments/assets/6a7e4ecb-0432-4581-890a-577e0eae463d)
@@ -193,10 +194,10 @@ python dy_apis/douyin_recv_msg.py
 
 ## 🍔 交流群
 
-如果你对爬虫和 AI Agent 感兴趣，请加作者主页 wx 通过邀请加入群聊
+如果你对爬虫和 AI Agent 感兴趣，可以加入群聊一起讨论~
 
-ps: 请加群，人满或者过期 issue | wx 提醒
+ps: 请加群，人满或者过期 issue | wx 提醒 | qq提醒
 
-| group-1 | group-2 | group-3 |
-|:--:|:--:|:--:|
-| <img width="280" alt="group1" src="https://cvcat.site/assets/group1.jpg" /> | <img width="280" alt="group2" src="https://cvcat.site/assets/group2.jpg" /> | <img width="280" alt="group3" src="https://cvcat.site/assets/group3.jpg" /> |
+| group-1 | group-2 | group-3 | group-4 (2000人qq群) |
+|:--:|:--:|:--:|:--:|
+| <img width="280" alt="group1" src="https://cvcat.site/assets/group1.jpg" /> | <img width="280" alt="group2" src="https://cvcat.site/assets/group2.jpg" /> | <img width="280" alt="group3" src="https://cvcat.site/assets/group3.jpg" /> | <img width="280" alt="group3" src="https://cvcat.site/assets/group4.jpg" /> |
